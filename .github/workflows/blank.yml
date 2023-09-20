@@ -1,0 +1,17 @@
+name: Publicar en GitHub Packages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Publicar paquete
+      run: |
+        dotnet nuget push --api-key ${{secrets.GITHUB_TOKEN}} --source https://nuget.pkg.github.com/${{github.repository_owner}} *.nupkg
