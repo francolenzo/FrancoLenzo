@@ -2,15 +2,14 @@ name: Publicar en GitHub Packages
 
 on:
   push:
-    branches: 
-      - main
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
@@ -19,4 +18,4 @@ jobs:
 
     - name: Publicar paquete
       run: |
-        dotnet nuget push "**/*.nupkg" --skip-duplicate --api-key ${{secrets.GH_PACKAGES_TOKEN}} --source https://nuget.pkg.github.com/${{github.repository_owner}}
+        dotnet nuget push "**/*.nupkg" --skip-duplicate --api-key ${{ secrets.GH_PACKAGES_TOKEN }} --source https://nuget.pkg.github.com/francolenzo
