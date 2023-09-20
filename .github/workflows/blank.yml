@@ -19,4 +19,4 @@ jobs:
 
     - name: Publicar paquete
       run: |
-        dotnet nuget push "**/*.nupkg" --skip-duplicate --api-key ${{secrets.GITHUB_TOKEN}} --source https://nuget.pkg.github.com/${{github.repository_owner}}
+        dotnet nuget push "**/*.nupkg" --skip-duplicate --api-key ${{secrets.GH_PACKAGES_TOKEN}} --source https://nuget.pkg.github.com/${{github.repository_owner}}
